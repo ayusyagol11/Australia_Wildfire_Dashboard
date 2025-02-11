@@ -1,8 +1,6 @@
 # 🌏 Australia Wildfire Dashboard
-
-![Dashboard Screenshot](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-glvg.png)
-
 Welcome to the **Australia Wildfire Dashboard**! This interactive web application provides insights into historical wildfire data across different regions of Australia. Built with **Dash** and **Plotly**, the dashboard allows users to explore wildfire trends, analyze fire intensity, and visualize key metrics over time.
+<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-glvg.png" alt="Dashboard Screenshot" width="800" height="400">
 
 ---
 
@@ -41,7 +39,6 @@ The dashboard uses the **Historical Wildfires Dataset**, which includes the foll
 
 ---
 
-
 ## 📈 Visualisations
 1. Monthly Average Estimated Fire Area (Pie Chart)
 Shows the distribution of fire area by month.
@@ -63,23 +60,23 @@ Explores the relationship between fire radiative power and brightness.
 Larger and darker points represent fires with higher area and count.
 ![Relationship between fire radiative power and brightness](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gino.png)
 
-🛠️ Technologies Used
+---
+
+## 🛠️ Technologies Used
 Python: Core programming language.
 
-Dash: Framework for building interactive web applications.
+- **Dash**: Framework for building interactive web applications.
 
-Plotly: Library for creating interactive visualizations.
+- **Plotly**: Library for creating interactive visualizations.
 
-Pandas: Data manipulation and analysis.
+- **Pandas**: Data manipulation and analysis.
 
-HTML/CSS: Styling and layout of the dashboard.
+- **HTML/CSS**: Styling and layout of the dashboard.
 
+---
 
-📧 Contact
+## 📧 Contact
 For questions or feedback, feel free to reach out:
-
-Email: mailto:aayushyagol11@gmail.com
-
+**Email: mailto:aayushyagol11@gmail.com
 GitHub: [ayusyagol11](https://github.com/ayusyagol11)
-
 LinkedIn: [Aayush Yagol](https://www.linkedin.com/in/aayush-yagol-046874145/)
