@@ -44,7 +44,8 @@ The dashboard uses the **Historical Wildfires Dataset**, which includes the foll
 **1. Monthly Average Estimated Fire Area (Pie Chart)**
 Shows the distribution of fire area by month.
 Helps identify months with the largest fire areas.
-![Monthly average estimated fire area](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gijd.png)
+<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gijd.png" alt="Monthly average estimated fire area" width="200" height="Auto">
+![](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gijd.png)
 
 **2. Monthly Average Count of Fire Pixels (Bar Chart)**
 Displays the frequency of fire pixels by month.
