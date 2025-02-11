@@ -1,6 +1,6 @@
 # 🌏 Australia Wildfire Dashboard
 
-![Dashboard Screenshot](https://via.placeholder.com/800x400) *(Replace with an actual screenshot of your dashboard)*
+![Dashboard Screenshot](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-glvg.png)
 
 Welcome to the **Australia Wildfire Dashboard**! This interactive web application provides insights into historical wildfire data across different regions of Australia. Built with **Dash** and **Plotly**, the dashboard allows users to explore wildfire trends, analyze fire intensity, and visualize key metrics over time.
 
@@ -17,6 +17,7 @@ Welcome to the **Australia Wildfire Dashboard**! This interactive web applicatio
   - **Bar Chart**: Monthly average count of fire pixels.
   - **Line Chart**: Mean fire brightness over time.
   - **Scatter Plot**: Relationship between fire radiative power and brightness.
+
 
 - **Insights**:
   - Identify months with the largest fire areas.
@@ -41,34 +42,26 @@ The dashboard uses the **Historical Wildfires Dataset**, which includes the foll
 ---
 
 
-📈 Visualisations
+## 📈 Visualisations
 1. Monthly Average Estimated Fire Area (Pie Chart)
-Pie Chart (Replace with actual image)
-
 Shows the distribution of fire area by month.
-
 Helps identify months with the largest fire areas.
+![Monthly average estimated fire area](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gijd.png)
 
 2. Monthly Average Count of Fire Pixels (Bar Chart)
-Bar Chart (Replace with actual image)
-
 Displays the frequency of fire pixels by month.
-
 Indicates how often fires occurred in each month.
+![Average Count of Pixels for Presumed Vegetation Fires](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gild.png)
 
 3. Mean Fire Brightness Over Time (Line Chart)
-Line Chart (Replace with actual image)
-
 Tracks the average fire brightness over time.
-
 Higher values indicate more intense fires.
+![Mean fire brightness over time](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gimk.png)
 
 4. Fire Radiative Power vs. Brightness (Scatter Plot)
-Scatter Plot (Replace with actual image)
-
 Explores the relationship between fire radiative power and brightness.
-
 Larger and darker points represent fires with higher area and count.
+![Relationship between fire radiative power and brightness](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gino.png)
 
 🛠️ Technologies Used
 Python: Core programming language.
