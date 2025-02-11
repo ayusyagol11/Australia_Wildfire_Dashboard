@@ -41,22 +41,22 @@ The dashboard uses the **Historical Wildfires Dataset**, which includes the foll
 ---
 
 ## 📈 Visualisations
-1. Monthly Average Estimated Fire Area (Pie Chart)
+**1. Monthly Average Estimated Fire Area (Pie Chart)**
 Shows the distribution of fire area by month.
 Helps identify months with the largest fire areas.
 ![Monthly average estimated fire area](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gijd.png)
 
-2. Monthly Average Count of Fire Pixels (Bar Chart)
+**2. Monthly Average Count of Fire Pixels (Bar Chart)**
 Displays the frequency of fire pixels by month.
 Indicates how often fires occurred in each month.
 ![Average Count of Pixels for Presumed Vegetation Fires](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gild.png)
 
-3. Mean Fire Brightness Over Time (Line Chart)
+**3. Mean Fire Brightness Over Time (Line Chart)**
 Tracks the average fire brightness over time.
 Higher values indicate more intense fires.
 ![Mean fire brightness over time](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gimk.png)
 
-4. Fire Radiative Power vs. Brightness (Scatter Plot)
+**4. Fire Radiative Power vs. Brightness (Scatter Plot)**
 Explores the relationship between fire radiative power and brightness.
 Larger and darker points represent fires with higher area and count.
 ![Relationship between fire radiative power and brightness](https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-gino.png)
@@ -78,6 +78,6 @@ Python: Core programming language.
 
 ## 📧 Contact
 For questions or feedback, feel free to reach out:
-**Email: mailto:aayushyagol11@gmail.com
-GitHub: [ayusyagol11](https://github.com/ayusyagol11)
-LinkedIn: [Aayush Yagol](https://www.linkedin.com/in/aayush-yagol-046874145/)
+- **Email**: mailto:aayushyagol11@gmail.com
+- **GitHub**: [ayusyagol11](https://github.com/ayusyagol11)
+- **LinkedIn**: [Aayush Yagol](https://www.linkedin.com/in/aayush-yagol-046874145/)
