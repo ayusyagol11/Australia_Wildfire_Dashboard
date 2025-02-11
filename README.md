@@ -1,6 +1,6 @@
 # 🌏 Australia Wildfire Dashboard
 Welcome to the **Australia Wildfire Dashboard**! This interactive web application provides insights into historical wildfire data across different regions of Australia. Built with **Dash** and **Plotly**, the dashboard allows users to explore wildfire trends, analyze fire intensity, and visualize key metrics over time.
-<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-glvg.png" alt="Dashboard Screenshot" width="800" height="400">
+<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250212-glvg.png" alt="Dashboard Screenshot" width="800" height="Auto">
 
 ---
 
