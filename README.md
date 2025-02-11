@@ -40,15 +40,53 @@ The dashboard uses the **Historical Wildfires Dataset**, which includes the foll
 
 ---
 
-## 🛠️ Setup Instructions
 
-### Prerequisites
-- Python 3.8 or higher
-- Pip (Python package manager)
+📈 Visualisations
+1. Monthly Average Estimated Fire Area (Pie Chart)
+Pie Chart (Replace with actual image)
 
-### Installation
+Shows the distribution of fire area by month.
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/australia-wildfire-dashboard.git
-   cd australia-wildfire-dashboard
+Helps identify months with the largest fire areas.
+
+2. Monthly Average Count of Fire Pixels (Bar Chart)
+Bar Chart (Replace with actual image)
+
+Displays the frequency of fire pixels by month.
+
+Indicates how often fires occurred in each month.
+
+3. Mean Fire Brightness Over Time (Line Chart)
+Line Chart (Replace with actual image)
+
+Tracks the average fire brightness over time.
+
+Higher values indicate more intense fires.
+
+4. Fire Radiative Power vs. Brightness (Scatter Plot)
+Scatter Plot (Replace with actual image)
+
+Explores the relationship between fire radiative power and brightness.
+
+Larger and darker points represent fires with higher area and count.
+
+🛠️ Technologies Used
+Python: Core programming language.
+
+Dash: Framework for building interactive web applications.
+
+Plotly: Library for creating interactive visualizations.
+
+Pandas: Data manipulation and analysis.
+
+HTML/CSS: Styling and layout of the dashboard.
+
+
+📧 Contact
+For questions or feedback, feel free to reach out:
+
+Email: mailto:aayushyagol11@gmail.com
+
+GitHub: [ayusyagol11](https://github.com/ayusyagol11)
+
+LinkedIn: [Aayush Yagol](https://www.linkedin.com/in/aayush-yagol-046874145/)
