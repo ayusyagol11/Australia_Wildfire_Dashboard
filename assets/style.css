@@ -1,0 +1,71 @@
+body, .dark-theme {
+    background-color: #1e1e1e;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.header-title {
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.top-controls {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.control-container {
+    background-color: #2e2e2e;
+    padding: 1rem;
+    border-radius: 8px;
+    min-width: 250px;
+}
+
+.dropdown {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+}
+
+.graph-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.graph-container {
+    background-color: #2c3e50;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    flex: 1 1 45%;
+    max-width: 48%;
+}
+
+.footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    background-color: #141414;
+    color: #999;
+    font-family: 'Inter', sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+    .graph-container {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
