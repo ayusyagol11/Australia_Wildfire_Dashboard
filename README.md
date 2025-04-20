@@ -46,25 +46,25 @@ The dashboard uses the **Historical Wildfires Dataset**, which includes the foll
 Shows the distribution of fire area by month.
 Helps identify months with the largest fire areas.
 
-<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250421-iczt.png" alt="Monthly average estimated fire area" width="500" height="Auto">
+<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250421-iczt.png" alt="Monthly average estimated fire area" width="600" height="Auto">
 
 **2. Monthly Average Count of Fire Pixels (Bar Chart)**
 Displays the frequency of fire pixels by month.
 Indicates how often fires occurred in each month.
 
-<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250421-idcc.png" alt="Average Count of Pixels for Presumed Vegetation Fires" width="500" height="Auto">
+<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250421-idcc.png" alt="Average Count of Pixels for Presumed Vegetation Fires" width="600" height="Auto">
 
 **3. Mean Fire Brightness Over Time (Line Chart)**
 Tracks the average fire brightness over time.
 Higher values indicate more intense fires.
 
-<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250421-iddi.png" alt="Mean fire brightness over time" width="500" height="Auto">
+<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250421-iddi.png" alt="Mean fire brightness over time" width="600" height="Auto">
 
 **4. Fire Radiative Power vs. Brightness (Scatter Plot)**
 Explores the relationship between fire radiative power and brightness.
 Larger and darker points represent fires with higher area and count.
 
-<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250421-idem.png" alt="Relationship between fire radiative power and brightness" width="500" height="Auto">
+<img src="https://github.com/ayusyagol11/Wildfire_Australia/blob/main/SC/SCR-20250421-idem.png" alt="Relationship between fire radiative power and brightness" width="600" height="Auto">
 
 ---
 
