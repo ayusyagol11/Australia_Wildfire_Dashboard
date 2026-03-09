@@ -1,11 +1,13 @@
 import pandas as pd
 import dash
 from dash import html, dcc, Input, Output
+import dash_bootstrap_components as dbc
 import plotly.express as px
 
 # Initialize the Dash application. Dash is a framework that allows us to build web-based analytical apps in Python.
 # '__name__' tells Flask (which Dash is built on) where to look for assets.
-app = dash.Dash(__name__)
+# We apply the 'DARKLY' Bootstap theme here to ensure responsive scaling and native dark-mode styling.
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
 
 # Set the title of the web page (what shows up in the browser tab)
 app.title = "Australia Wildfire Dashboard"
@@ -56,54 +58,90 @@ regions = df['Region'].unique()
 # STEP 2: FRONTEND LAYOUT (USER INTERFACE)
 # -----------------------------------------------------------------------------------------
 
-# Define the HTML structure of our dashboard inside app.layout
-app.layout = html.Div([
+# Define the HTML structure of our dashboard inside a responsive DBC Container
+app.layout = dbc.Container([
     
-    # Main Dashboard Header
-    html.H1("Australia Wildfire Dashboard", className="header-title"),
+    # Main Dashboard Header Row
+    dbc.Row(
+        dbc.Col(html.H1("Australia Wildfire Dashboard", className="text-center my-4"), width=12)
+    ),
 
-    # The top control panel containing our Dropdown filters
-    html.Div([
-        
-        # Region Dropdown
-        html.Div([
-            html.H2("Select Region"),
-            dcc.Dropdown(
-                id='region', # The ID tells our Python backend which dropdown this is
-                options=[{'label': r, 'value': r} for r in regions], # Create dropdown choices from our unique regions list
-                value='New South Wales',  # Set the default selected value
-                className='dropdown',
-                style={'color': '#000'} # Text inside the dropdown is black
-            )
-        ], className="control-container"),
+    # The top control panel containing our Dropdown filters and High-Level KPIs
+    dbc.Row([
+        # Filters Column
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    html.H5("Filter Dashboard", className="card-title"),
+                    html.Label("Select Region:"),
+                    dcc.Dropdown(
+                        id='region',
+                        options=[{'label': r, 'value': r} for r in regions],
+                        value='New South Wales',
+                        className='mb-3 text-dark'
+                    ),
+                    html.Label("Select Year:"),
+                    dcc.Dropdown(
+                        id='year',
+                        options=[{'label': y, 'value': y} for y in years],
+                        value=years[0],
+                        className='text-dark'
+                    )
+                ])
+            ], className="mb-4 h-100 shadow-sm")
+        ], md=4), # Takes up 4/12 columns on medium screens
 
-        # Year Dropdown
-        html.Div([
-            html.H2("Select Year"),
-            dcc.Dropdown(
-                id='year',
-                options=[{'label': y, 'value': y} for y in years],
-                value=years[0], # Default to the very first year in the sorted list
-                className='dropdown',
-                style={'color': '#000'}
-            )
-        ], className="control-container")
-        
-    ], className="top-controls"),
+        # KPI Metric Cards Column
+        dbc.Col([
+            dbc.Row([
+                # KPI Card 1: Total Estimated Area Burnt
+                dbc.Col(
+                    dbc.Card([
+                        dbc.CardBody([
+                            html.H5("Total Area Burnt", className="card-title text-warning"),
+                            html.H2(id="kpi-area", className="card-text fw-bold text-white")
+                        ])
+                    ], className="mb-4 h-100 shadow-sm border-warning"), width=6
+                ),
+                # KPI Card 2: Total Fire Hotspots (Pixels)
+                dbc.Col(
+                    dbc.Card([
+                        dbc.CardBody([
+                            html.H5("Total Fire Hotspots", className="card-title text-danger"),
+                            html.H2(id="kpi-pixels", className="card-text fw-bold text-white")
+                        ])
+                    ], className="mb-4 h-100 shadow-sm border-danger"), width=6
+                )
+            ], className="h-100")
+        ], md=8), # Takes up 8/12 columns on medium screens
+    ], className="mb-4"),
 
-    # The Grid containing our four Plotly graphs
-    # We use dcc.Graph components to hold the charts that we will generate with Python below.
-    html.Div([
-        html.Div([dcc.Graph(id='plot1')], className="graph-container"),
-        html.Div([dcc.Graph(id='plot2')], className="graph-container"),
-        html.Div([dcc.Graph(id='plot3')], className="graph-container"),
-        html.Div([dcc.Graph(id='plot4')], className="graph-container"),
-    ], className="graph-grid"),
+    # The Grid containing our four Plotly graphs.
+    # We wrap them in dcc.Loading components so users see a spinning circle during any cold starts.
+    dcc.Loading(
+        type="circle",
+        color="#ffc107",
+        children=dbc.Row([
+            dbc.Col(dbc.Card(dcc.Graph(id='plot1'), className="mb-4 shadow-sm"), md=6),
+            dbc.Col(dbc.Card(dcc.Graph(id='plot2'), className="mb-4 shadow-sm"), md=6),
+        ])
+    ),
+
+    dcc.Loading(
+        type="circle", 
+        color="#ffc107",
+        children=dbc.Row([
+            dbc.Col(dbc.Card(dcc.Graph(id='plot3'), className="mb-4 shadow-sm"), md=6),
+            dbc.Col(dbc.Card(dcc.Graph(id='plot4'), className="mb-4 shadow-sm"), md=6),
+        ])
+    ),
 
     # Simple footer
-    html.Footer("Created by Aayush Yagol 2025", className="footer")
+    dbc.Row(
+        dbc.Col(html.Footer("Created by Aayush Yagol 2025", className="text-center text-muted my-4"), width=12)
+    )
 
-], className='dark-theme')  # Wrap the entire layout in a 'dark-theme' class for styling via CSS
+], fluid=True, className="p-4")  # fluid=True makes it expand to fill the window securely
 
 
 # -----------------------------------------------------------------------------------------
@@ -114,7 +152,9 @@ app.layout = html.Div([
 # It says: Whenever an 'Input' property changes (like the value of the dropdowns),
 # run the function below, and spit the results into the 'Output' properties (the 'figure' attributes of our graphs).
 @app.callback(
-    [Output('plot1', 'figure'),
+    [Output('kpi-area', 'children'),
+     Output('kpi-pixels', 'children'),
+     Output('plot1', 'figure'),
      Output('plot2', 'figure'),
      Output('plot3', 'figure'),
      Output('plot4', 'figure')],
@@ -122,48 +162,56 @@ app.layout = html.Div([
      Input('year', 'value')]
 )
 def update_graphs(region, year):
-    # This function is triggered automatically by Dash when the user interacts with the page.
-    # The 'region' and 'year' arguments are passed in from the Dropdowns.
-    
     # Filter the raw dataframe to match the user's selected Region and Year. 
-    # We use this raw data entirely for the Scatter plot.
+    # We use this raw data entirely for the Scatter plot and KPIs.
     dff = df[(df['Region'] == region) & (df['Year'] == year)]
 
-    # 1. Pie Chart: Filter our pre-calculated global pie data and create a Pie chart using Plotly Express (px).
+    # Calculate Top-Level KPI Metric Card strings
+    total_area = dff['Estimated_fire_area'].sum()
+    total_pixels = dff['Count'].sum()
+    kpi_area_str = f"{total_area:,.2f} ha"
+    kpi_pixels_str = f"{int(total_pixels):,}"
+
+    # 1. Pie Chart: Avg Fire Area by Month
     pie_data = global_pie_data[(global_pie_data['Region'] == region) & (global_pie_data['Year'] == year)]
     fig1 = px.pie(pie_data, names='Month', values='Estimated_fire_area',
                   title=f"{region}: Avg Fire Area by Month ({year})",
-                  color_discrete_sequence=px.colors.sequential.Reds) # Red color theme
+                  color_discrete_sequence=px.colors.sequential.YlOrRd) # Updated to intuitive YlOrRd
+    fig1.update_traces(hovertemplate="<b>%{label}</b><br>Average Area Burnt: %{value:.2f} hectares<extra></extra>")
 
-    # 2. Bar Chart: Filter pre-calculated bar data to show Pixel Count by Month
+    # 2. Bar Chart: Pixel Count by Month
     bar_data = global_bar_data[(global_bar_data['Region'] == region) & (global_bar_data['Year'] == year)]
     fig2 = px.bar(bar_data, x='Month', y='Count',
                   title=f"{region}: Avg Pixel Count by Month ({year})",
-                  color='Count', color_continuous_scale='Inferno') # the 'Inferno' color scale shows heat density
+                  color='Count', color_continuous_scale='YlOrRd')
+    fig2.update_traces(hovertemplate="In <b>%{x}</b>, there was an average of <b>%{y:.1f}</b> detected fire hotspot pixels.<extra></extra>")
 
-    # 3. Line Chart: Filter pre-calculated line data to track Fire Brightness over the months
+    # 3. Line Chart: Track Fire Brightness over the months
     line_data = global_line_data[(global_line_data['Region'] == region) & (global_line_data['Year'] == year)]
     fig3 = px.line(line_data, x='Month', y='Mean_estimated_fire_brightness',
-                   title=f"{region}: Fire Brightness Trend ({year})", markers=True)
+                   title=f"{region}: Fire Brightness Trend ({year})<br><i>(Unweighted satellite detection averages)</i>", markers=True)
+    fig3.update_traces(hovertemplate="<b>%{x}</b><br>Mean Brightness: %{y:.1f} Kelvin<extra></extra>")
 
-    # 4. Bubble Scatter Plot: Compare Radiative Power vs Brightness using the raw filtered data
+    # 4. Bubble Scatter Plot: Compare Radiative Power vs Brightness
     fig4 = px.scatter(dff, x='Mean_estimated_fire_brightness', y='Mean_estimated_fire_radiative_power',
-                      title=f"{region}: Radiative Power vs Brightness ({year})",
-                      color='Estimated_fire_area', size='Count')
+                      title=f"{region}: Radiative Power vs Brightness ({year})<br><i>(Highlights potential outliers per hot spot)</i>",
+                      color='Estimated_fire_area', size='Count',
+                      color_continuous_scale='YlOrRd')
+    fig4.update_traces(hovertemplate="<b>Brightness:</b> %{x:.1f} K<br><b>Radiative Power:</b> %{y:.1f} MW<br><b>Area:</b> %{marker.color:.1f} ha<br><b>Pixels:</b> %{marker.size}<extra></extra>")
 
     # Iterate through all four generated charts and apply a dark-mode theme
-    # This edits the layout dictionaries to match the aesthetic of the external CSS file.
+    # This edits the layout dictionaries to match the aesthetic of the external CSS file and DBC Darkly theme.
     for fig in [fig1, fig2, fig3, fig4]:
         fig.update_layout(
-            paper_bgcolor="#1e1e1e", # Dark background outside the chart lines
-            plot_bgcolor="#1e1e1e",  # Dark background inside the chart lines
+            paper_bgcolor="rgba(0,0,0,0)", # Transparent background sets cleanly over the bootstrap cards
+            plot_bgcolor="rgba(0,0,0,0)",
             font=dict(color="white", family="'Inter', 'Segoe UI', sans-serif", size=14),
-            title_font=dict(size=22, family="'Inter', 'Segoe UI', sans-serif", color='white')
+            title_font=dict(size=18, family="'Inter', 'Segoe UI', sans-serif", color='white')
         )
 
-    # Return exactly four objects, mapping to plot1, plot2, plot3, and plot4 respectively.
-    # Note: Returning them as a tuple (fig1, fig2...) is required in Dash to prevent backend unpacking errors.
-    return (fig1, fig2, fig3, fig4)
+    # Return exactly six objects, mapping to our two KPI card outputs and four graph outputs respectively.
+    # Note: Returning them as a tuple (a, b, fig1...) is required in Dash to prevent backend unpacking errors.
+    return (kpi_area_str, kpi_pixels_str, fig1, fig2, fig3, fig4)
 
 # -----------------------------------------------------------------------------------------
 # STEP 4: RUN SERVER
@@ -171,4 +219,4 @@ def update_graphs(region, year):
 
 # The standard Python entry point. If we are running this script directly, start the local development server.
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)
